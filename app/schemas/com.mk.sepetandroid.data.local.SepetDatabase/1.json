@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "ab1f7b57ec34acb6a1695ca3bba517fa",
+    "entities": [
+      {
+        "tableName": "TokenEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `accessToken` TEXT NOT NULL, `refreshToken` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accessToken",
+            "columnName": "accessToken",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "refreshToken",
+            "columnName": "refreshToken",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ab1f7b57ec34acb6a1695ca3bba517fa')"
+    ]
+  }
+}
